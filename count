@@ -1,0 +1,6 @@
+#!/bin/sh
+echo -n "bytes: "
+./16k.py -s -b -h -c -l -q *php verbs/*php | wc -c
+perl -e 'print int(16*1024-`./16k.py -s -b -h -c -l -q *php verbs/*php | wc -c`); print " left\n";'
+perl -e 'print int(`./16k.py -s -b -h -c -l -q *php verbs/*php | wc -c`/16/1024*100); print "% used\n";'
+ctags -R
